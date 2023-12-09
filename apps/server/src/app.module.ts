@@ -4,7 +4,6 @@ import { PostModule } from './post/post.module'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default'
 import { PrismaModule } from './prisma/prisma.module'
-import { join } from 'path'
 import { UserModule } from './user/user.module'
 import { RoleModule } from './role/role.module'
 
@@ -16,7 +15,7 @@ import { RoleModule } from './role/role.module'
     PostModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: true, // join(process.cwd(), 'src/schema.gql'),
       installSubscriptionHandlers: true,
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
